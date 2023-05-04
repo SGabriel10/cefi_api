@@ -26,6 +26,8 @@ app.use('/cefi_api/products',require('./routes/product'));
 //CRUD sales
 app.use('/cefi_api/sales',require('./routes/sale'));
 app.use('/cefi_api/sale_details',require('./routes/saleDetails'));
+//Auth
+app.use('/cefi_api/auth',require('./routes/auth'));
 
 
 
