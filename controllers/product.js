@@ -11,7 +11,7 @@ const obtenerProductos= async(req,res)=>{
 
 
 const crearProducto=async (req,res)=>{
-    const {categoria}=req.body; 
+    const {categoria}=req.body;
     let producto = await Producto.findOne({descripcion: req.body.descripcion});
     if (producto){
         return res.status(400).json({
