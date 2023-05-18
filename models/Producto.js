@@ -9,6 +9,9 @@ const Producto = new Schema({
     precio_unitario : {
         type: Number
     },
+    cantidad: {
+        type: Number
+    },
     categoria: {
         type: Schema.Types.ObjectId,
         ref: 'Categoria',
