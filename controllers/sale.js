@@ -11,8 +11,8 @@ const obtenerVentas= async(req,res)=>{
 
 
 const crearVenta=async (req,res)=>{
-    console.log(req.body);
-    let venta = await Venta.findOne();
+    //console.log(req.body);
+    //let venta = await Venta.findOne();
     let cliente = await Cliente.findOne({name: { $regex: req.body.cliente.split(' ').join("|"), $options: "i" }})
     /*if (venta){
         return res.status(400).json({

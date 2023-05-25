@@ -1,5 +1,4 @@
 const VentaDetalle = require('../models/VentaDetalle');
-
 const obtenerDetalles= async(req,res)=>{
     let detalles= await VentaDetalle.find().populate("producto","descripcion");
 
@@ -8,11 +7,7 @@ const obtenerDetalles= async(req,res)=>{
         detalles
     });
 }
-
-
 const crearDetalle=async (req,res)=>{
-    console.log(req.body);
-
     try{
 
         let detalle = new VentaDetalle(req.body);
@@ -23,7 +18,7 @@ const crearDetalle=async (req,res)=>{
         await detalle.save();
         return res.status(201).json({
             "ok": true,
-            msg: "nueva categoria"
+            msg: "nueva detalle"
         });
     }catch (error){
         console.log(error);
@@ -95,5 +90,6 @@ module.exports ={
     obtenerDetalles,
     crearDetalle,
     actualizarDetalle,
-    eliminarDetalle
+    eliminarDetalle,
+    verificarCantidad
 }
