@@ -6,6 +6,10 @@ const Producto = new Schema({
         type: String,
         required : true
     },
+    cod_barras : {
+        type: String,
+        required : true
+    },
     precio_unitario : {
         type: Number
     },
