@@ -11,6 +11,13 @@ const obtenerUsuarios= async(req,res)=>{
     });
 }
 
+const obtenerUsuarioById=async (req,res)=>{
+    let usuario= await Usuario.findOne({id: req.body.id});
+    return res.json({
+        ok: true,
+        usuario
+    })
+}
 
 const crearUsuario=async (req,res)=>{
     const {email,password}=req.body
@@ -52,20 +59,7 @@ const crearUsuario=async (req,res)=>{
 
 
 
-const getUsers=(req, res) =>{
-    const pageOptions = {
-        page: parseInt(req.query.page, 10) || 0,
-        limit: parseInt(req.query.limit, 10) || 10
-    }
 
-    Usuario.find()
-        .skip(pageOptions.page * pageOptions.limit)
-        .limit(pageOptions.limit)
-        .exec(function (err, doc) {
-            if(err) { res.status(500).json(err); return; };
-            res.status(200).json(doc);
-        });
-}
 
 
 const actualizarUsuario=async(req,res)=>{
@@ -185,9 +179,9 @@ const eliminarUsuario=async (req,res)=>{
 module.exports ={
     logearUsuario,
     renovarUsuario,
+    obtenerUsuarioById,
     obtenerUsuarios,
     crearUsuario,
     actualizarUsuario,
     eliminarUsuario,
-    getUsers
 }

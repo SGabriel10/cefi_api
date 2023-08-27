@@ -5,6 +5,11 @@ const Venta = new Schema({
     fecha : {
         type: Date
     },
+    vendedor:{
+        type: Schema.Types.ObjectId,
+        ref: 'Usuario',
+        required: true
+    },
     cliente: {
         type: Schema.Types.ObjectId,
         ref: 'Cliente',

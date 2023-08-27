@@ -1,5 +1,6 @@
 const Venta = require('../models/Venta');
 const Cliente = require('../models/Cliente');
+const Usuario = require('../models/Usuario');
 const obtenerVentas= async(req,res)=>{
     let ventas= await Venta.find().populate("cliente","name last_name ruc");
 
@@ -14,6 +15,7 @@ const crearVenta=async (req,res)=>{
     //console.log(req.body);
     //let venta = await Venta.findOne();
     let cliente = await Cliente.findOne({name: { $regex: req.body.cliente.split(' ').join("|"), $options: "i" }})
+    let vendedor = await Usuario.findOne({name: req.body.vendedor});
     /*if (venta){
         return res.status(400).json({
             ok: false,
@@ -25,6 +27,7 @@ const crearVenta=async (req,res)=>{
 
         venta = new Venta(req.body);
         venta.cliente= cliente;
+        venta.vendedor= vendedor;
 
         await venta.save();
         return res.status(201).json({
