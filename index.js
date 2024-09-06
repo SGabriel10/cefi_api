@@ -21,6 +21,10 @@ app.use('/cefi_api/categories',require('./routes/category'));
 //CRUD clients
 app.use('/cefi_api/clients',require('./routes/client'));
 
+//CRUD clients
+app.use('/cefi_api/prices',require('./routes/price'));
+
+
 //CRUD products
 app.use('/cefi_api/products',require('./routes/product'));
 //CRUD sales

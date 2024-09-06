@@ -13,22 +13,25 @@ const logearUsuario = async (req,res)=>{
     }
 
     try{
-        const validPassword=bcrypt.compareSync(password, usuario.password);
-        if (!validPassword){
+        //const validPassword=bcrypt.compareSync(password, usuario.password);
+        console.log(password,usuario.password);
+        if (password==usuario.password){
+            //generar JWT
+            const token= await generarTOKEN(usuario.id,usuario.name);
+            return res.json({
+                "ok": true,
+                msg: "login",
+                uid: usuario.id,
+                name: usuario.name,
+                token
+            })    
+        }
+        else{
             return res.status(400).json({
                 "ok":false,
-                msg: 'Password valido'
+                msg: 'Password invalido'
             })
-        }
-        //generar JWT
-        const token= await generarTOKEN(usuario.id,usuario.name);
-        return res.json({
-            "ok": true,
-            msg: "login",
-            uid: usuario.id,
-            name: usuario.name,
-            token
-        })
+    }
     }
     catch (error){
         console.log(error);
