@@ -21,9 +21,11 @@ app.use('/cefi_api/categories',require('./routes/category'));
 //CRUD clients
 app.use('/cefi_api/clients',require('./routes/client'));
 
-//CRUD clients
+//CRUD prices
 app.use('/cefi_api/prices',require('./routes/price'));
 
+//CRUD parking
+app.use('/cefi_api/parking',require('./routes/parking'));
 
 //CRUD products
 app.use('/cefi_api/products',require('./routes/product'));
@@ -32,13 +34,6 @@ app.use('/cefi_api/sales',require('./routes/sale'));
 app.use('/cefi_api/sale_details',require('./routes/saleDetails'));
 //Auth
 app.use('/cefi_api/auth',require('./routes/auth'));
-
-
-
-
-
-
-
 
 //escuchar peticiones
 app.listen(process.env.PORT,()=> console.log(`servidor corriendo en puerto ${process.env.PORT}`));

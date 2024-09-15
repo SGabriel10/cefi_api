@@ -11,7 +11,7 @@ const obtenerPrecios= async(req,res)=>{
 
 
 const crearPrecio=async (req,res)=>{
-    const {name}=req.body
+    const {descripcion}=req.body
     let precio = await Precio.findOne({descripcion: descripcion});
     if (precio){
         return res.status(400).json({
