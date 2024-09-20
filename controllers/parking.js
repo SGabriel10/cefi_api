@@ -1,4 +1,4 @@
-const Precio = require('../models/Parking');
+const Parking = require('../models/Parking');
 
 
 const obtenerCar= async(req,res)=>{
@@ -12,7 +12,7 @@ const obtenerCar= async(req,res)=>{
 
 const crearCar=async (req,res)=>{
     const {nro_chapa}=req.body
-    let car = await Precio.findOne({nro_chapa: nro_chapa});
+    let car = await Parking.findOne({nro_chapa: nro_chapa});
     if (car){
         return res.status(400).json({
             ok: false,
@@ -22,7 +22,6 @@ const crearCar=async (req,res)=>{
     try{
 
         carro = new Parking(req.body);
-
         await carro.save();
         return res.status(201).json({
             "ok": true,
