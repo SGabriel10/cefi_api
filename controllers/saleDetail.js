@@ -2,7 +2,6 @@ const VentaDetalle = require('../models/VentaDetalle');
 const Producto = require('../models/Producto');
 const obtenerDetalles= async(req,res)=>{
     let detalles= await VentaDetalle.find().populate("producto","descripcion");
-
     return res.json({
         ok: true,
         detalles

@@ -1,19 +1,24 @@
 const Upload = require('../models/Upload');
-
 const uploadImage=async(req,res)=>{
     try{
         const {file,body} = req;
+        var image = null;
         if(file && body){
             const newImage = new Upload({
                 nombre: 'logo',
-                url: `http:localhost:4000/upload/${file.filename}`
+                url: `http://localhost:4000/uploads/${file.filename}`
             })
-            await newImage.save();
+            image = await newImage.save();
+            res.set('Content-Type', 'image/jpeg');
+            return res.json({
+                ok: true,
+                msg: "Se agrego la imagen",
+                id: image._id
+            }); 
+        }else {
+            console.log("no hay nada que agregar");
         }
-        return res.json({
-            ok: true,
-            msg: "Se agrego la imagen"
-        });    
+           
     }catch (error){
         console.log(error);
         return res.status(500).json({
@@ -22,9 +27,4 @@ const uploadImage=async(req,res)=>{
         })
     }
 };
-
-const obtenerImage=async(req,res)=>{
-
-}
-
-module.exports = {uploadImage,obtenerImage};
+module.exports = {uploadImage};

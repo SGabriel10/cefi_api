@@ -10,14 +10,5 @@ const Upload = new Schema({
         type: String,
         required: true
     },
-    propietario:{
-        type: String,
-    },
-    direccion: {
-        type: String
-    },
-    telefono:{
-        type: String
-    }
 });
 module.exports = mongoose.model('Upload', Upload);
